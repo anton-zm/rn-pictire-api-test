@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
+import { useStore } from '../store/use-store'
 
 export const Intro = ({ navigation }: {navigation: any}) => {
+    const store = useStore()
+    const nextScreen = store.login ? 'Main' : 'Login'
+    
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate('Main')
+            navigation.navigate(nextScreen)
         }, 5000)
     },[])
     
