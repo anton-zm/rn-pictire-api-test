@@ -1,11 +1,25 @@
+import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Colors } from '../utils/consts';
+import { validateLoginForm } from '../utils/funcs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const LoginScreen = () => {
+export const LoginScreen = observer(({navigation}:{navigation: any}) => {
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState(' ')   
+
+    const Confirm = async () => {
+        const isValidData = validateLoginForm(password, name, setError)
+        if(isValidData){
+            const record = await AsyncStorage.setItem('user', name)
+            console.log(record)
+            navigation.navigate('Main')
+        }
+    }
+
 
     return (
         <View style={styles.container}>
@@ -23,13 +37,14 @@ export const LoginScreen = () => {
                     value={password}
                     placeholder='Enter password (3 + 4 = ?) '
                 />
-                <TouchableOpacity style={styles.btn}>
+                {error && <Text style={styles.error}>{error}</Text>}
+                <TouchableOpacity onPress={Confirm} style={styles.btn}>
                     <Text style={styles.btn_text}>Confirm</Text>
                 </TouchableOpacity>
             </View>
         </View>
     )
-}
+})
 
 const styles = StyleSheet.create({
     container: {
@@ -60,11 +75,16 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.Main,
         borderRadius: 5,
         padding: 20,
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 48
     },
     btn_text: {
         color: 'white',
         fontSize: 18
+    },
+    error: {
+        color: 'red',
+        textAlign: 'center'
     },
     text_container: {
       alignItems: 'center',
