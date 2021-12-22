@@ -5,8 +5,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Colors } from '../utils/consts';
 import { validateLoginForm } from '../utils/funcs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useStore } from '../store/use-store';
 
 export const LoginScreen = observer(({navigation}:{navigation: any}) => {
+    const store = useStore()
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState(' ')   
@@ -14,6 +16,8 @@ export const LoginScreen = observer(({navigation}:{navigation: any}) => {
     const Confirm = async () => {
         const isValidData = validateLoginForm(password, name, setError)
         if(isValidData){
+            store.setUserName(name)
+            store.setLogin(true)
             const record = await AsyncStorage.setItem('user', name)
             console.log(record)
             navigation.navigate('Main')
