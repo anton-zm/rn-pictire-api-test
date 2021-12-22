@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
 import { useStore } from '../store/use-store'
+import { Colors } from '../utils/consts'
 
 export const Intro = ({ navigation }: {navigation: any}) => {
     const store = useStore()
     const nextScreen = store.login ? 'Main' : 'Login'
-    
+
     useEffect(() => {
         setTimeout(() => {
             navigation.navigate(nextScreen)
@@ -25,7 +26,7 @@ export const Intro = ({ navigation }: {navigation: any}) => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#4c4ff1',
+      backgroundColor: Colors.Main,
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
