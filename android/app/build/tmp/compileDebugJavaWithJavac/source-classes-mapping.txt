@@ -1,0 +1,14 @@
+com/rn_img_api/MainApplication.java
+ com.rn_img_api.MainApplication
+ com.rn_img_api.MainApplication$1
+com/rn_img_api/MainActivity.java
+ com.rn_img_api.MainActivity
+com/rn_img_api/ReactNativeFlipper.java
+ com.rn_img_api.ReactNativeFlipper
+ com.rn_img_api.ReactNativeFlipper$1
+ com.rn_img_api.ReactNativeFlipper$2
+ com.rn_img_api.ReactNativeFlipper$2$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
+com/rn_img_api/BuildConfig.java
+ com.rn_img_api.BuildConfig
