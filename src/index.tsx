@@ -12,7 +12,7 @@ export default function App(){
   return (
     <NavigationContainer>
         <Route.Navigator screenOptions={{headerShown:false}}>
-            {/* <Route.Screen name='Intro' component={Intro} /> */}
+            <Route.Screen name='Intro' component={Intro} />
             <Route.Screen name='Main' component={MainScreen} />
         </Route.Navigator>
     </NavigationContainer>
