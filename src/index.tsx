@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { Intro } from './screens/intro';
 import { MainScreen } from './screens/main';
 import { LoginScreen } from './screens/login';
+import { ItemScreen } from './screens/item';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useStore, Ctx } from './store/use-store';
 
@@ -30,6 +31,7 @@ export default function App(){
             <Route.Screen name='Intro' component={Intro} />
             <Route.Screen name='Main' component={MainScreen} />
             <Route.Screen name='Login' component={LoginScreen} /> 
+            <Route.Screen name='Item' component={ItemScreen} />
         </Route.Navigator>
       </NavigationContainer>
     </Ctx.Provider>

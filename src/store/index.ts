@@ -7,6 +7,7 @@ export class Storage {
     _login = false
     _userName = ''
     _imgData:IPhoto[] = []
+    _currentItem:IPhoto | null = null
     
     constructor() { makeAutoObservable(this) }
 
@@ -30,6 +31,9 @@ export class Storage {
             })
             .catch(e => console.log(e))
     }
+    setCurrentItem(v:IPhoto){
+        this._currentItem = v
+    }
 
     get login(){
         return this._login
@@ -39,6 +43,9 @@ export class Storage {
     }
     get imgData(){
         return this._imgData
+    }
+    get currentItem(){
+        return this._currentItem
     }
 
 }

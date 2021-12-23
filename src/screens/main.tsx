@@ -33,7 +33,7 @@ export const MainScreen = observer(({navigation}:{navigation: any}) => {
             <ScrollView style={styles.content}>
                 <Text style={styles.title}>1000000+ photos, find your favourite!</Text>
                 <SearchForm />
-                <Grid />
+                <Grid navigation={navigation}/>
             </ScrollView>
         </View>
     )

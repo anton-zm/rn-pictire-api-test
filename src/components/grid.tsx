@@ -4,8 +4,7 @@ import { StyleSheet, View, TouchableOpacity, Image } from 'react-native'
 import { IPhoto } from '../interfaces'
 import { useStore } from '../store/use-store'
 
-
-export const Grid = observer(() => {
+export const Grid = observer(({navigation}:{navigation: any}) => {
     const store = useStore()
     return (
         <View style={styles.grid}>
@@ -14,7 +13,8 @@ export const Grid = observer(() => {
                 <TouchableOpacity 
                     key={item.id} 
                     onPress={() => {
-                        console.log(item.id)
+                        store.setCurrentItem(item)
+                        navigation.navigate('Item')
                     }}
                     style={styles.item}
                 >
