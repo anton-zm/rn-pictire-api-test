@@ -18,6 +18,7 @@ export default function App(){
         if(res){
           store.setLogin(true)
           store.setUserName(res)
+          store.fetchStartData()
         }
       })
   },[])
