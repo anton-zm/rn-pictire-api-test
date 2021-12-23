@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { Input } from '../components/text-input';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Colors } from '../utils/consts';
 import { validateLoginForm } from '../utils/funcs';
@@ -29,15 +30,13 @@ export const LoginScreen = observer(({navigation}:{navigation: any}) => {
         <View style={styles.container}>
             <Text style={styles.title}>Sign In</Text>
             <View style={styles.form}>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={setName}
+                <Input
+                    onChange={setName}
                     value={name}
                     placeholder='Enter your name'
                 />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={setPassword}
+                <Input
+                    onChange={setPassword}
                     value={password}
                     placeholder='Enter password (3 + 4 = ?) '
                 />
