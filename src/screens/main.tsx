@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { useStore } from '../store/use-store'
 import { Header } from '../components/header'
+import { Grid } from '../components/grid'
 import { SearchIcon } from '../assets/svg/search-icon'
 import { Colors } from '../utils/consts'
 
@@ -32,6 +33,7 @@ export const MainScreen = observer(({navigation}:{navigation: any}) => {
             <ScrollView style={styles.content}>
                 <Text style={styles.title}>1000000+ photos, find your favourite!</Text>
                 <SearchForm />
+                <Grid />
             </ScrollView>
         </View>
     )
