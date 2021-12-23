@@ -6,6 +6,19 @@ import { Header } from '../components/header'
 import { SearchIcon } from '../assets/svg/search-icon'
 import { Colors } from '../utils/consts'
 
+const SearchForm = observer(() => {
+    const [request, setRequest] = useState('')
+    const Search = () => {}
+    return (
+        <View style={styles.search_form}>
+            <TextInput value={request} style={styles.input} onChangeText={setRequest} />
+            <TouchableOpacity onPress={Search} style={styles.search_btn}>
+                <SearchIcon />
+            </TouchableOpacity>
+        </View>
+    )
+})
+
 export const MainScreen = observer(({navigation}:{navigation: any}) => {
     const store = useStore()
     
@@ -13,21 +26,12 @@ export const MainScreen = observer(({navigation}:{navigation: any}) => {
         if(!store.login) navigation.navigate('Login')
     },[store.login])
 
-    const Search = () => {
-
-    }
-
     return (
         <View style={styles.wrapper}>
             <Header />
             <ScrollView style={styles.content}>
                 <Text style={styles.title}>1000000+ photos, find your favourite!</Text>
-                <View style={styles.search_form}>
-                    <TextInput style={styles.input} />
-                    <TouchableOpacity onPress={Search} style={styles.search_btn}>
-                        <SearchIcon />
-                    </TouchableOpacity>
-                </View>
+                <SearchForm />
             </ScrollView>
         </View>
     )
