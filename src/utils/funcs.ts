@@ -28,7 +28,7 @@ export const validateLoginForm = (
 
 export const hydrateItems = (array: Record<string, any>[]):IPhoto[] => {
     const filteredData = array.filter((e:Record<string, any>) => {
-        return (e.description && e.location.title)
+        return (e.description)
     })
     const normalizeData = filteredData.map((e:Record<string, any>) => {
         return {
@@ -36,7 +36,6 @@ export const hydrateItems = (array: Record<string, any>[]):IPhoto[] => {
             createdAt: e.created_at,
             description: e.description,
             likes: e.likes,
-            location: e.location.title,
             url: e.urls.regular,
             id: e.id
         }

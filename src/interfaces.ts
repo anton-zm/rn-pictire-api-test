@@ -2,8 +2,7 @@ export interface IPhoto {
     author: string,
     createdAt: Date,
     description: string,
-    likes: number,
-    location: string,
+    likes: number
     url: string,
     id: string
 }

@@ -1,14 +1,23 @@
 import { observer } from 'mobx-react-lite'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, TouchableOpacity, Image } from 'react-native'
 import { IPhoto } from '../interfaces'
 import { useStore } from '../store/use-store'
 
-export const Grid = observer(({navigation}:{navigation: any}) => {
+export const Grid = observer(({navigation, data}:{navigation: any, data:IPhoto[]}) => {
     const store = useStore()
+    
+    // const [data, setData] = useState([])
+
+    // useEffect(() => {
+    //     console.log('STORE CHANGED!!!')
+    //     console.log(store.imgData)
+    //     setData(JSON.parse(store.imgData))
+    // },[store.imgData])
+
     return (
         <View style={styles.grid}>
-            {store.imgData.map((item:IPhoto) => {
+            {data.map((item:IPhoto) => {
             return (
                 <TouchableOpacity 
                     key={item.id} 

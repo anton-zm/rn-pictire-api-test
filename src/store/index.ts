@@ -42,7 +42,7 @@ export class Storage {
         return this._userName
     }
     get imgData(){
-        return this._imgData
+        return JSON.stringify(this._imgData)
     }
     get currentItem(){
         return this._currentItem
