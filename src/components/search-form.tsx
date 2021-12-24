@@ -17,6 +17,7 @@ export const SearchForm = observer(({setPhotos}:{setPhotos:any}) => {
     const Search = (tag?: string) => {
         const req = tag || request
         if(req){
+            store.setTag('')
             searchPhotos(req)
                 .then((res: Record<string, any>) => {
                     setPhotos(hydrateItems(res.results))

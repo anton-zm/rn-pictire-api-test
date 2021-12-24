@@ -24,7 +24,10 @@ export const ItemScreen = observer(({navigation}:{navigation: any}) => {
                 {tags && 
                     <Tags 
                         data={tags} 
-                        onPress={(tag:string) => store.setTag(tag)} 
+                        onPress={(tag:string) => {
+                            store.setTag(tag)
+                            navigation.navigate('Main')
+                        }} 
                     />}
             </ScrollView>
         </View>
