@@ -4,5 +4,6 @@ export interface IPhoto {
     description: string,
     likes: number
     url: string,
-    id: string
+    id: string,
+    tags?: string[]
 }

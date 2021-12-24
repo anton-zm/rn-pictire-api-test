@@ -37,8 +37,17 @@ export const hydrateItems = (array: Record<string, any>[]):IPhoto[] => {
             description: e.description,
             likes: e.likes,
             url: e.urls.regular,
-            id: e.id
+            id: e.id,
+            tags: e.tags || []
         }
     })
     return normalizeData
+}
+
+export const getResultDate = (date: Date) => {
+    const m = date.getMonth()
+    const y = date.getFullYear()
+    const d = date.getDate()
+    
+    return `${d}.${m+1}.${y}`
 }
