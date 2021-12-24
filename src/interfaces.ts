@@ -1,3 +1,4 @@
+
 export interface IPhoto {
     author: string,
     createdAt: Date,
@@ -5,5 +6,5 @@ export interface IPhoto {
     likes: number
     url: string,
     id: string,
-    tags?: any[]
+    tags?: string[]
 }

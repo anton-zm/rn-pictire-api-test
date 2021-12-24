@@ -8,9 +8,10 @@ import config from '../config'
 import { hydrateItems } from '../utils/funcs'
 import { Tags } from '../components/tags'
 import { searchPhotos } from '../utils/api-reqs'
+import { IPhoto } from '../interfaces'
 
 
-export const SearchForm = observer(({setPhotos}:{setPhotos:any}) => {
+export const SearchForm = observer(({setPhotos}:{setPhotos:(v:IPhoto[])=> void}) => {
     const store = useStore()
     const [request, setRequest] = useState('')
         

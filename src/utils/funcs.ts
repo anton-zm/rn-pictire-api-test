@@ -31,6 +31,7 @@ export const hydrateItems = (array: Record<string, any>[]):IPhoto[] => {
         return (e.description)
     })
     const normalizeData = filteredData.map((e:Record<string, any>) => {
+        const tags = e.tags?.map((tag:Record<string, any>) => tag.title)
         return {
             author: e.user.name,
             createdAt: e.created_at,
@@ -38,7 +39,7 @@ export const hydrateItems = (array: Record<string, any>[]):IPhoto[] => {
             likes: e.likes,
             url: e.urls.regular,
             id: e.id,
-            tags: e.tags || []
+            tags
         }
     })
     return normalizeData

@@ -9,8 +9,7 @@ import { observer } from 'mobx-react-lite'
 export const ItemScreen = observer(({navigation}:{navigation: any}) => {
     const store = useStore()
     const item = store.currentItem!
-    const tags = item.tags?.map(tag => tag.title)
-
+    
     return (
         <View style={styles.wrapper}>
             <Header />
@@ -21,9 +20,9 @@ export const ItemScreen = observer(({navigation}:{navigation: any}) => {
                     resizeMode='contain'
                 />
                 <ItemDetails item={item} />
-                {tags && 
+                {item.tags && 
                     <Tags 
-                        data={tags} 
+                        data={item.tags} 
                         onPress={(tag:string) => {
                             store.setTag(tag)
                             navigation.navigate('Main')

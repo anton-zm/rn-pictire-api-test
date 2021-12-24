@@ -12,7 +12,7 @@ const Tag = observer(({text, onPress}:{text:string, onPress: (v:string)=>void}) 
     )
 })
 
-export const Tags = observer(({data, onPress}:{data:string[], onPress: any}) => {
+export const Tags = observer(({data, onPress}:{data:string[], onPress: (v:string)=> void}) => {
     return (
         <View style={styles.container}>
             {data.map((tag, i) => (
