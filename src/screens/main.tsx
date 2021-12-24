@@ -4,7 +4,6 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useStore } from '../store/use-store'
 import { Header } from '../components/header'
 import { Grid } from '../components/grid'
-import { Colors } from '../utils/consts'
 import { SearchForm } from '../components/search-form'
 
 

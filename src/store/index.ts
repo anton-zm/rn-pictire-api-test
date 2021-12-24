@@ -1,13 +1,14 @@
 import { makeAutoObservable } from "mobx"
 import { IPhoto } from "../interfaces"
-import config from "../config"
 import { hydrateItems } from "../utils/funcs"
+import { getStartPhotos } from "../utils/api-reqs"
 
 export class Storage { 
     _login = false
     _userName = ''
     _imgData:IPhoto[] = []
     _currentItem:IPhoto | null = null
+    _tag = ''
     
     constructor() { makeAutoObservable(this) }
 
@@ -21,11 +22,7 @@ export class Storage {
         this._imgData = data
     }
     fetchStartData(){
-        fetch(`${config.api_url}/photos/random?count=30&client_id=${config.api_key}`,{
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'}
-        })
-            .then(res => res.json())
+        getStartPhotos()
             .then(res => {
                 this.setImgData(hydrateItems(res))
             })
@@ -33,6 +30,9 @@ export class Storage {
     }
     setCurrentItem(v:IPhoto){
         this._currentItem = v
+    }
+    setTag(v:string){
+        this._tag = v
     }
 
     get login(){
@@ -46,6 +46,9 @@ export class Storage {
     }
     get currentItem(){
         return this._currentItem
+    }
+    get tag(){
+        return this._tag
     }
 
 }

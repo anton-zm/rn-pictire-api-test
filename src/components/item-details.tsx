@@ -1,9 +1,10 @@
+import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { IPhoto } from '../interfaces'
 import { getResultDate } from '../utils/funcs'
 
-export const ItemDetails = ({item}:{item:IPhoto}) => {
+export const ItemDetails = observer(({item}:{item:IPhoto}) => {
     return (
         <View style={styles.wrapper}>
             <Text style={styles.description}>{item.description}</Text>
@@ -14,7 +15,7 @@ export const ItemDetails = ({item}:{item:IPhoto}) => {
             </View>
         </View>
     )
-}
+})
 
 const styles = StyleSheet.create({
     wrapper: {

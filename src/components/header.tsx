@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontWeight: 'normal',
         fontSize: 18,
-        lineHeight: 16,   
         color: 'white',
     },
     logout:{

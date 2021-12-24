@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ImageBackground, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { useStore } from '../store/use-store'
 import { Header } from '../components/header'
 import { Tags } from '../components/tags'
 import { ItemDetails } from '../components/item-details'
+import { observer } from 'mobx-react-lite'
 
-export const ItemScreen = ({navigation}:{navigation: any}) => {
+export const ItemScreen = observer(({navigation}:{navigation: any}) => {
     const store = useStore()
     const item = store.currentItem!
     const tags = item.tags?.map(tag => tag.title)
+
     return (
         <View style={styles.wrapper}>
             <Header />
@@ -19,11 +21,15 @@ export const ItemScreen = ({navigation}:{navigation: any}) => {
                     resizeMode='contain'
                 />
                 <ItemDetails item={item} />
-                {tags && <Tags data={tags} onPress={() => {}} />}
+                {tags && 
+                    <Tags 
+                        data={tags} 
+                        onPress={(tag:string) => store.setTag(tag)} 
+                    />}
             </ScrollView>
         </View>
     )
-}
+})
 
 const styles = StyleSheet.create({
     wrapper: {

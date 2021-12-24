@@ -7,6 +7,7 @@ import { Colors } from '../utils/consts'
 import config from '../config'
 import { hydrateItems } from '../utils/funcs'
 import { Tags } from '../components/tags'
+import { searchPhotos } from '../utils/api-reqs'
 
 
 export const SearchForm = observer(({setPhotos}:{setPhotos:any}) => {
@@ -16,16 +17,12 @@ export const SearchForm = observer(({setPhotos}:{setPhotos:any}) => {
     const Search = (tag?: string) => {
         const req = tag || request
         if(req){
-            fetch(`${config.api_url}/search/photos?query=${req}&per_page=40&client_id=${config.api_key}`,{
-                method: 'GET',
-                headers: {'Content-Type': 'application/json'}
-            })
-                .then(res => res.json())
-                .then(res => {
+            searchPhotos(req)
+                .then((res: Record<string, any>) => {
                     setPhotos(hydrateItems(res.results))
                     store.setImgData(hydrateItems(res.results))
                 })
-                .catch(e => console.log(e))
+                .catch((e: Error) => console.log(e))
         }
     }
     return (
