@@ -1,4 +1,4 @@
 export enum Colors {
-    Main = '#4c4ff1',
+    Main = '#31a9ce',
     Grey = '#959496'
 }
