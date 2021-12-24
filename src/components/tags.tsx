@@ -2,7 +2,6 @@ import { observer } from 'mobx-react-lite'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Colors } from '../utils/consts'
-import config from '../config'
 
 const Tag = observer(({text, onPress}:{text:string, onPress: (v:string)=>void}) => {
     return (

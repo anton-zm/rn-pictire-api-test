@@ -6,7 +6,6 @@ import { Header } from '../components/header'
 import { Grid } from '../components/grid'
 import { SearchForm } from '../components/search-form'
 
-
 export const MainScreen = observer(({navigation}:{navigation: any}) => {
     const store = useStore()
     const imgs = JSON.parse(store.imgData)

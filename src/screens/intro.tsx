@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator, Image } from 'react-native'
 import { Colors } from '../utils/consts'
+//@ts-ignore
 import logo from '../assets/rn-logo.png'
 
 export const Intro = ({ navigation }: {navigation: any}) => {
