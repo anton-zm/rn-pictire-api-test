@@ -1,48 +1,12 @@
 import { observer } from 'mobx-react-lite'
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { useStore } from '../store/use-store'
 import { Header } from '../components/header'
 import { Grid } from '../components/grid'
-import { SearchIcon } from '../assets/svg/search-icon'
 import { Colors } from '../utils/consts'
-import config from '../config'
-import { hydrateItems } from '../utils/funcs'
-import { Tags } from '../components/tags'
+import { SearchForm } from '../components/search-form'
 
-const SearchForm = observer(({setPhotos}:{setPhotos:any}) => {
-    const store = useStore()
-    const [request, setRequest] = useState('')
-        
-    const Search = (tag?: string) => {
-        const req = tag || request
-        if(req){
-            fetch(`${config.api_url}/search/photos?query=${req}&per_page=40&client_id=${config.api_key}`,{
-                method: 'GET',
-                headers: {'Content-Type': 'application/json'}
-            })
-                .then(res => res.json())
-                .then(res => {
-                    setPhotos(hydrateItems(res.results))
-                    store.setImgData(hydrateItems(res.results))
-                })
-                .catch(e => console.log(e))
-        }
-    }
-    return (
-        <View>
-            <View style={styles.search_form}>
-                <TextInput value={request} style={styles.input} onChangeText={setRequest} />
-                <TouchableOpacity onPress={() => { Search()}} style={styles.search_btn}>
-                    <SearchIcon />
-                </TouchableOpacity>
-            </View>
-            <Tags onPress={(tag:string) => {
-                Search(tag)
-            }} />
-        </View>
-    )
-})
 
 export const MainScreen = observer(({navigation}:{navigation: any}) => {
     const store = useStore()
@@ -66,11 +30,6 @@ export const MainScreen = observer(({navigation}:{navigation: any}) => {
 })
 
 const styles = StyleSheet.create({
-    error: {
-      color: 'red',
-      textAlign: 'center',
-  
-    },
     wrapper: {
         flex: 1,
         justifyContent: 'space-between',
@@ -85,22 +44,5 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center'
     },
-    search_form: {
-        width: '100%',
-        flexDirection: 'row',
-        marginTop: 32
-    },
-    input: {
-        width: '85%',
-        padding: 10,
-        borderWidth: 1,
-        borderColor: Colors.Grey,
-    },
-    search_btn: {
-        width: '15%',
-        backgroundColor: Colors.Main,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
   });
   
