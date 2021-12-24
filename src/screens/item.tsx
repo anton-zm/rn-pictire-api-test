@@ -5,10 +5,10 @@ import { Header } from '../components/header'
 import { Tags } from '../components/tags'
 import { ItemDetails } from '../components/item-details'
 
-export const ItemScreen = () => {
+export const ItemScreen = ({navigation}:{navigation: any}) => {
     const store = useStore()
     const item = store.currentItem!
-    
+    const tags = item.tags?.map(tag => tag.title)
     return (
         <View style={styles.wrapper}>
             <Header />
@@ -19,8 +19,8 @@ export const ItemScreen = () => {
                     resizeMode='contain'
                 />
                 <ItemDetails item={item} />
+                {tags && <Tags data={tags} onPress={() => {}} />}
             </ScrollView>
-            
         </View>
     )
 }

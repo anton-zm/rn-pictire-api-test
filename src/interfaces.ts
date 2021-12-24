@@ -5,5 +5,5 @@ export interface IPhoto {
     likes: number
     url: string,
     id: string,
-    tags?: string[]
+    tags?: any[]
 }
