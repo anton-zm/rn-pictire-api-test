@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
-import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TextInput, Pressable, Keyboard } from 'react-native'
 import { useStore } from '../store/use-store'
 import { SearchIcon } from '../assets/svg/search-icon'
 import { Colors } from '../utils/consts'
@@ -16,6 +16,7 @@ export const SearchForm = observer(({setPhotos}:{setPhotos:(v:IPhoto[])=> void})
     const [request, setRequest] = useState('')
         
     const Search = (tag?: string) => {
+        Keyboard.dismiss()
         const req = tag || request
         if(req){
             store.setTag('')
@@ -30,10 +31,20 @@ export const SearchForm = observer(({setPhotos}:{setPhotos:(v:IPhoto[])=> void})
     return (
         <View>
             <View style={styles.search_form}>
-                <TextInput value={request} style={styles.input} onChangeText={setRequest} />
-                <TouchableOpacity onPress={() => { Search()}} style={styles.search_btn}>
+                <TextInput 
+                    value={request} 
+                    style={styles.input} 
+                    onChangeText={setRequest} 
+                />
+                <Pressable 
+                    android_ripple={{
+                        color: Colors.Grey
+                    }} 
+                    onPress={() => { Search()}} 
+                    style={styles.search_btn}
+                >
                     <SearchIcon />
-                </TouchableOpacity>
+                </Pressable>
             </View>
             <Tags data={config.tags} onPress={(tag:string) => {
                 Search(tag)
@@ -43,11 +54,6 @@ export const SearchForm = observer(({setPhotos}:{setPhotos:(v:IPhoto[])=> void})
 })
 
 const styles = StyleSheet.create({
-    error: {
-      color: 'red',
-      textAlign: 'center',
-  
-    },
     search_form: {
         width: '100%',
         flexDirection: 'row',

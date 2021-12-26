@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { useStore } from '../store/use-store'
 import { Header } from '../components/header'
 import { Grid } from '../components/grid'
@@ -18,11 +18,11 @@ export const MainScreen = observer(({navigation}:{navigation: any}) => {
     return (
         <View style={styles.wrapper}>
             <Header />
-            <ScrollView style={styles.content}>
+            <View style={styles.content}>
                 <Text style={styles.title}>1000000+ photos, find your favourite!</Text>
                 <SearchForm setPhotos={setPhotos} />
                 <Grid data={photos} navigation={navigation}/>
-            </ScrollView>
+            </View>
         </View>
     )
 })
