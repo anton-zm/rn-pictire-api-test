@@ -8,3 +8,10 @@ export interface IPhoto {
     id: string,
     tags?: string[]
 }
+
+export enum Screens {
+    INTRO = 'Intro',
+    LOGIN = 'Login',
+    MAIN = 'Main',
+    ITEM = 'Item'
+}

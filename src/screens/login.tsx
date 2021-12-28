@@ -7,8 +7,9 @@ import { Colors } from '../utils/consts';
 import { validateLoginForm } from '../utils/funcs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useStore } from '../store/use-store';
+import { Screens } from '../interfaces';
 
-export const LoginScreen = observer(({navigation}:{navigation: any}) => {
+export const LoginScreen = observer(({ navigation }: {navigation: any}) => {
     const store = useStore()
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
@@ -21,7 +22,7 @@ export const LoginScreen = observer(({navigation}:{navigation: any}) => {
             store.setLogin(true)
             const record = await AsyncStorage.setItem('user', name)
             console.log(record)
-            navigation.navigate('Main')
+            navigation.reset({ index: 0, routes: [{ name: Screens.MAIN }] })
         }
     }
 

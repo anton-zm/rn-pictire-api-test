@@ -12,7 +12,7 @@ export const MainScreen = observer(({navigation}:{navigation: any}) => {
     const [photos, setPhotos] = useState(imgs)
     
     useEffect(() => {
-        if(!store.login) navigation.navigate('Login')
+        if(!store.login) navigation.reset({ index: 0, routes: [{ name: 'Login' }] })
     },[store.login])
 
     return (

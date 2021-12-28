@@ -7,6 +7,7 @@ import { LoginScreen } from './screens/login';
 import { ItemScreen } from './screens/item';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useStore, Ctx } from './store/use-store';
+import { Screens } from './interfaces';
 
 const Route = createStackNavigator();
 
@@ -28,10 +29,10 @@ export default function App(){
     <Ctx.Provider value={store}>
       <NavigationContainer>
         <Route.Navigator screenOptions={{headerShown:false}}>
-            <Route.Screen name='Intro' component={Intro} />
-            <Route.Screen name='Main' component={MainScreen} />
-            <Route.Screen name='Login' component={LoginScreen} /> 
-            <Route.Screen name='Item' component={ItemScreen} />
+            <Route.Screen name={Screens.INTRO} component={Intro} />
+            <Route.Screen name={Screens.MAIN} component={MainScreen} />
+            <Route.Screen name={Screens.LOGIN} component={LoginScreen} /> 
+            <Route.Screen name={Screens.ITEM} component={ItemScreen} />
         </Route.Navigator>
       </NavigationContainer>
     </Ctx.Provider>
